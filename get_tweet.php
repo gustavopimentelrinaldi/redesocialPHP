@@ -24,10 +24,16 @@
 	if($resultado_id){
 
 		while($registro = mysqli_fetch_array($resultado_id, MYSQLI_ASSOC)){
-			echo '<a href="#" class="list-group-item">';
-				echo '<h4 class="list-group-item-heading">'.$registro['usuario'].' <small> - '.$registro['data_inclusao_formatada'].'</small></h4>';
-				echo '<p class="list-group-item-text">'.$registro['tweet'].'</p>';
-			echo '</a>';
+			echo '<div class="ui feed">';
+				echo '<div class="event">';
+					echo '<div class="content">';
+						echo '<div class="summary">';
+							echo '<a style="font-size: 20px;">'.$registro['usuario'].'</a> <small style="font-size: 12px;"> - <span class="date"> '.$registro['data_inclusao_formatada'].'</span></small>';
+							echo '<p style="font-weight: normal;">'.$registro['tweet'].'</p>';
+						echo '</div>';
+					echo '</div>';
+				echo '</div>';
+			echo '</div>';
 		}
 
 	} else {
