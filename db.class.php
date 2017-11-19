@@ -3,13 +3,13 @@
 class db {
 
 	//host
-	private $host = 'mysql.hostinger.com.br';
+	private $host = 'localhost';
 
 	//usuario
-	private $usuario = 'u840845752_root';
+	private $usuario = 'root';
 
 	//senha
-	private $senha = 'fbd3f721';
+	private $senha = 'root';
 
 	//banco de dados
 	private $database = 'u840845752_test';

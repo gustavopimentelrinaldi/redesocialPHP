@@ -1,15 +1,14 @@
 ﻿<!DOCTYPE HTML>
 <html lang="pt-br">
-	<head>
-		<meta charset="UTF-8">
-		<title>Projeto ~ Home</title>
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-		<link rel="stylesheet" type="text/css" href="semantic/semantic.min.css">
-		
-	</head>
-<body>
+<head>
+	<meta charset="UTF-8">
+	<title>Projeto ~ Home</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="semantic/semantic.min.css">
+</head>
 
+<body>
 	<div class="ui secondary pointing menu">
 		<div class="ui container">
 			<a class="active item">
@@ -25,7 +24,7 @@
 			</div>
 		</div>
 	</div>
-
+	
 	<?php
 		session_start();
 
@@ -62,7 +61,7 @@
 			echo 'Erro ao executar a query!! Consulte o Administrador!!!';
 		}
 	?>
-	
+
 	<div class="ui container">
 		<div class="ui grid">
 			<div class="four wide column" style="margin: 2em 0;">
@@ -117,39 +116,38 @@
 		</div><!-- ui grid -->
 	</div><!-- container -->
 
-		<script
-			src="https://code.jquery.com/jquery-3.1.1.min.js"
-			integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-			crossorigin="anonymous"></script>
-		<script src="semantic/semantic.min.js"></script>
-		<script type="text/javascript">
-			$(document).ready( function(){
-				//associar o evento de click ao botão
-				$('#btn_tweet').click( function(){
-					if($('#texto_tweet').val().length > 0){
-						$.ajax({
-							url: 'inclui_tweet.php',
-							method: 'post',
-							data: $('#form_tweet').serialize(),
-							success: function(data) {
-								$('#texto_tweet').val('');
-								atualizaTweet();
-							}
-						});
-					}
-				});
-
-				function atualizaTweet(){
-					//carregar os tweets 
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"
+		integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+		crossorigin="anonymous"></script>
+	<script src="semantic/semantic.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready( function(){
+			//associar o evento de click ao botão
+			$('#btn_tweet').click( function(){
+				if($('#texto_tweet').val().length > 0){
 					$.ajax({
-						url: 'get_tweet.php',
+						url: 'inclui_tweet.php',
+						method: 'post',
+						data: $('#form_tweet').serialize(),
 						success: function(data) {
-							$('#tweets').html(data);
+							$('#texto_tweet').val('');
+							atualizaTweet();
 						}
 					});
 				}
-				atualizaTweet();
 			});
-		</script>
+
+			function atualizaTweet(){
+				//carregar os tweets 
+				$.ajax({
+					url: 'get_tweet.php',
+					success: function(data) {
+						$('#tweets').html(data);
+					}
+				});
+			}
+			atualizaTweet();
+		});
+	</script>
 	</body>
 </html>
