@@ -1,5 +1,17 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+<head>
+	<meta charset="UTF-8">
+	<title>Logar-se</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="semantic/semantic.min.css">
+</head>
+<body>
+	
+</body>
+</html>
 <?php
-
 	require_once('db.class.php');
 
 	$usuario = $_POST['usuario'];
@@ -59,10 +71,29 @@
 
 	//executar a query
 	if(mysqli_query($link, $sql)){
-		echo '<a href="index.php">Logar-se</a>';
+		echo '<div class="ui container"><div class="ui cards ui grid">
+		<div class="card sixteen wide column">
+			<div class="content">
+				<img class="right floated mini ui image" src="/images/avatar/large/elliot.jpg">
+				<div class="header">
+					Bem-Vindo
+				</div>
+				<div class="meta">
+					Social Network
+				</div>
+				<div class="description">
+					Se tudo deu certo, logue na página principal... Senão, tente novamente!
+				</div>
+			</div>
+			<div class="extra content">
+				<div class="ui two buttons">
+					<a href="index.php" class="ui basic green button">Logar-se</a>
+					<a href="registrar/inscrevase.php" class="ui basic red button">Tentar novamente</a>
+				</div>
+			</div>
+		</div>
+	</div></div>';
 	} else {
 		echo 'Erro ao registrar o usuário!';
 	}
-
-
 ?>

@@ -1,131 +1,106 @@
 ﻿<?php
-
 	$erro = isset($_GET['erro']) ? $_GET['erro'] : 0;
-
 ?>
-
-
 <!DOCTYPE HTML>
 <html lang="pt-br">
-	<head>
-		<meta charset="UTF-8">
+<head>
+	<meta charset="UTF-8">
+	<title>Rede social ~ Principal</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="semantic/semantic.min.css">
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"
+			integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+			crossorigin="anonymous"></script>
+	<script src="semantic/semantic.min.js"></script>
 
-		<title>Rede social ~ Principal</title>
+	<script>
+		$(document).ready( function(){
+			//verificar se os campos de usuário e senha foram devidamente preenchidos
+			$('#btn_login').click(function(){
 
-		<!-- jquery - link cdn -->
-		<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+				var campo_vazio = false;
 
-		<!-- bootstrap - link cdn -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+				if($('#campo_usuario').val() == ''){
+					$('#campo_usuario').css({'border-color': '#A94442'});
+					campo_vazio = true;
+				} else {
+					$('#campo_usuario').css({'border-color': '#CCC'});
+				}
 
-  	<link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900|RobotoDraft:400,100,300,500,700,900'>
-	<link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
-		<link rel="stylesheet" type="text/css" href="style.css">
-		<link rel="stylesheet" type="text/css" href="index.js">
-		 <link rel="stylesheet" href="css/style.css">
-		 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-	
-		<script>
-			$(document).ready( function(){
+				if($('#campo_senha').val() == ''){
+					$('#campo_senha').css({'border-color': '#A94442'});
+					campo_vazio = true;
+				} else {
+					$('#campo_senha').css({'border-color': '#CCC'});
+				}
 
-				//verificar se os campos de usuário e senha foram devidamente preenchidos
-				$('#btn_login').click(function(){
+				if(campo_vazio) return false;
+			});
+		});					
+	</script>
+</head>
 
-					var campo_vazio = false;
-
-					if($('#campo_usuario').val() == ''){
-						$('#campo_usuario').css({'border-color': '#A94442'});
-						campo_vazio = true;
-					} else {
-						$('#campo_usuario').css({'border-color': '#CCC'});
-					}
-
-					if($('#campo_senha').val() == ''){
-						$('#campo_senha').css({'border-color': '#A94442'});
-						campo_vazio = true;
-					} else {
-						$('#campo_senha').css({'border-color': '#CCC'});
-					}
-
-					if(campo_vazio) return false;
-				});
-			});					
-		</script>
-	</head>
-
-	<body>
-
-		<!-- Static navbar -->
-	    <nav>
-	      <div class="container">
-	        <div class="navbar-header">
-	          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-	            <span class="sr-only">Toggle navigation</span>
-	            <span class="icon-bar"></span>
-	            <span class="icon-bar"></span>
-	            <span class="icon-bar"></span>
-	          </button>
-	            <li><a>Projeto Rinaldi</a></li>
-	          
-	        </div>
-	        
-	        <div id="navbar" class="navbar-collapse collapse">
-	          <ul class="nav navbar-nav navbar-right primary">
-	      
-	            <li><a href="registrar/inscrevase.php">Inscrever-se</a></li>
-	            <li class="<?= $erro == 1 ? 'open' : '' ?>">
-	            	<a id="entrar" data-target="#" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Entrar</a>
-					<ul class="dropdown-menu sub" aria-labelledby="entrar">
-						<div class="col-md-12">
-				    		<p>Você possui uma conta?</h3>
-				    		<br />
+<body>
+	<div class="ui secondary pointing menu">
+		<div class="ui container">
+			<a class="active item">
+				Projeto Rede Social
+			</a>
+			<div class="right menu">
+				<a class="ui item" href="registrar/inscrevase.php">
+						Inscrever-se
+				</a>
+				<div class="ui dropdown">
+					<a class="ui item" href="#login">
+					Entrar
+					</a>
+					<div class="menu" style="padding: 2em 1em;">
 							<form method="post" action="validar_acesso.php" id="formLogin">
-								<div class="form-group">
-									<input type="text" class="form-control" id="campo_usuario" name="usuario" placeholder="Usuário" />
+								<div class="ui input" style="margin-bottom: 1em; ">
+									<input id="campo_usuario" type="text" name="usuario" placeholder="Login...">
+								</div><br>
+								<div class="ui input" style="margin-bottom: 1em; ">
+									<input id="campo_senha" type="text" name="senha" placeholder="Senha...">
 								</div>
 								
-								<div class="form-group">
-									<input type="password" class="form-control red" id="campo_senha" name="senha" placeholder="Senha" />
-								</div>
-								
-								<button type="buttom" class="btn btn-primary" id="btn_login">Entrar</button>
-
-								<br /><br />
-								
+								<button id="btn_login" class="item">
+									Entrar
+								</button>
+								<?php
+									if($erro == 1){
+										echo '<font color="#FF0000">Usuário e ou senha inválido(s)</font>';
+									}
+								?>
 							</form>
+					</div><!-- menu -->
+				</div><!-- ui dropdown -->
+			</div><!-- right menu -->
+		</div><!-- ui container -->
+	</div><!-- menu -->
 
-							<?php
-								if($erro == 1){
-									echo '<font color="#FF0000">Usuário e ou senha inválido(s)</font>';
-								}
-							?>
+	<div class="ui container">
+		<div class="ui cards ui grid">
+			<div class="card sixteen wide column">
+					<div class="content">
+						<div class="header">Bem vindo, este projeto foi feito com as seguintes tecnologias -> JavaScript(JQuery), Semantic UI, PHP &amp; MySQL...</div>
+						<div class="description">
+							Se consiste em uma rede social, onde o usuário cria uma conta e interage com outras pessoas... (Seguir, deixar de seguir, fazer postagens etc.)
+						</div>
+					</div>
+					<a href="registrar/inscrevase.php" class="ui bottom attached button">
+						<i class="add icon"></i>
+						Criar conta
+					</a>
+				</div>
+			</div><!-- card -->
+		</div><!-- ui cards -->
+	</div><!-- container -->
 
-						</form>
-				  	</ul>
-	            </li>
-	          </ul>
-	        </div><!--/.nav-collapse -->
-	      </div>
-	    </nav>
-
-
-	    <div class="container">
-
-	      <div class="jumbotron jumb">
-	      <p class="bg-danger warn1">Projeto desenvolvido com PHP &amp; MySQL!!!</p>
-	      
-	        <h2>Bem vindo!! Crie uma conta ou entre em uma já existente no menu acima!!</h2>
-	        <p>Veja o que está acontecendo agora...</p>
-	      </div>
-
-	      <div class="clearfix"></div>
-		</div>
-
-
-	    </div>
-
-
-
-    
-	</body>
+	<script>
+		$('.ui.dropdown')
+			.dropdown()
+		;	
+	</script>		
+</body>
 </html>
