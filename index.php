@@ -61,7 +61,7 @@
 									<input id="campo_usuario" type="text" name="usuario" placeholder="Login...">
 								</div><br>
 								<div class="ui input" style="margin-bottom: 1em; ">
-									<input id="campo_senha" type="text" name="senha" placeholder="Senha...">
+									<input id="campo_senha" type="password" name="senha" placeholder="Senha...">
 								</div>
 								
 								<button id="btn_login" class="item">
