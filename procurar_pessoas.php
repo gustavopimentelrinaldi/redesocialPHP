@@ -103,7 +103,7 @@
 				<div class="content">
 					<form id="form_procurar_pessoas" class="ui form">
 						<div class="ui action input thirteen wide field">
-							<input type="text" id="nome_pessoa" name="nome_pessoa" class="form-control" placeholder="Escreva algo..." maxlength="140" />
+							<input type="text" id="nome_pessoa" name="nome_pessoa" class="form-control" placeholder="Procura amigos..." maxlength="140" />
 							<button class="ui button" id="btn_procurar_pessoa" type="button">Procurar</button>
 						</div>
 					</form>

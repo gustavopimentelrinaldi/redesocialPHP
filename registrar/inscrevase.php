@@ -1,100 +1,55 @@
 <?php
-
 	$erro_usuario	= isset($_GET['erro_usuario'])	? $_GET['erro_usuario'] : 0;
 	$erro_email		= isset($_GET['erro_email'])	? $_GET['erro_email']	: 0;
-
 ?>
 
 <!DOCTYPE HTML>
 <html lang="pt-br">
-	<head>
-		<meta charset="UTF-8">
+<head>
+	<meta charset="UTF-8">
+	<title>Rede social ~ Inscreva-se</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="../semantic/semantic.min.css">
+</head>
 
-		<title>Rede social ~ Inscreva-se</title>
-		
-		<!-- jquery - link cdn -->
-		<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-
-		<!-- bootstrap - link cdn -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-		<link rel="stylesheet" type="text/css" href="../style.css">
-	
-	</head>
-
-	<body id="bodyins">
-
-		<!-- Static navbar -->
-	    <nav>
-	      <div class="container">
-	        <div class="navbar-header">
-	          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-	            <span class="sr-only">Toggle navigation</span>
-	            <span class="icon-bar"></span>
-	            <span class="icon-bar"></span>
-	            <span class="icon-bar"></span>
-	          </button>
-	            <li><a>Projeto Rinaldi</a></li>
-	          
-	        </div>
-	        
-	        <div id="navbar" class="navbar-collapse collapse">
-	          <ul class="nav navbar-nav navbar-right primary">
-	            <li><a href="../index.php">Voltar para a Home</a></li>
-	            </li>
-	            </ul>
-	          </div>
-	      </div><!-- container -->
-	    </nav>
-
-
-	    <div class="container" id="formulario">
-	    	
-	    	<br /><br />
-
-	    	<div class="col-md-4"></div>
-	    	<div class="col-md-4">
-	    		<h3>Inscreva-se já.</h3>
-	    		<br />
-				<form method="post" action="../registra_usuario.php" id="formCadastrarse">
-					<div class="form-group">
-						<input type="text" class="form-control" id="usuario" name="usuario" placeholder="Usuário" required="requiored">
-						<?php
-							if($erro_usuario){ // 1/true 0/false
-								echo '<font style="color:#FF0000">Usuário já existe</font>';
-							}
-						?>
-					</div>
-
-					<div class="form-group">
-						<input type="email" class="form-control" id="email" name="email" placeholder="Email" required="requiored">
-						<?php
-							if($erro_email){
-								echo '<font style="color:#FF0000">E-mail já existe</font>';
-							}
-						?>
-					</div>
-					
-					<div class="form-group">
-						<input type="password" class="form-control" id="senha" name="senha" placeholder="Senha" required="requiored">
-					</div>
-					
-					<button type="submit" class="btn btn-primary form-control">Inscreva-se</button>
-				</form>
+<body>
+	<div class="ui secondary pointing menu">
+		<div class="ui container">
+			<a class="active item">
+				Home
+			</a>
+			<div class="right menu">
+			<a class="ui item" href="../index.php">
+					Voltar para principal
+				</a>
 			</div>
-			<div class="col-md-4"></div>
-
-			<div class="clearfix"></div>
-			<br />
-			<div class="col-md-4"></div>
-			<div class="col-md-4 border"><center>Developed by #Rinaldi!</center></div>
-			<div class="col-md-4"></div>
-
 		</div>
+	</div>
 
-
-	    </div>
-	
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-	
-	</body>
+	<div class="ui container">
+		<form class="ui form" method="post" action="../registra_usuario.php">
+			<div class="fields">
+			<div class="two wide field"></div>
+				<div class="six wide field">
+					<label>Nome de usuário</label>
+					<input type="text" id="usuario" name="usuario" placeholder="First Name">
+				</div>
+				<div class="six wide field">
+					<label>Email</label>
+					<input type="email" id="email" name="email" placeholder="Email">
+				</div>
+			</div>
+			
+			<div class="fields">
+			<div class="two wide field"></div>
+				<div class="twelve wide field">
+					<label>Senha</label>
+					<input type="password" id="senha" name="senha" placeholder="Senha">
+					<button class="ui button" type="submit" style="margin: 1em 0;">Cadastrar</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</body>
 </html>
